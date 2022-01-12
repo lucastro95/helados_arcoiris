@@ -7,12 +7,11 @@
 
 .navBar {
     width: 100%;
-    height: 16em;
+    height: 5em;
     padding: 0.5em 0em;
     background-color: #A2D2FF;
     display: flex;
-    flex-flow: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -25,36 +24,66 @@
     height: 3.2em;
     padding-right: 1em;
 }
+
 .navBar .logo h1 {
+    width: auto;
     color: #fafafa;
     font-family: 'Pacifico', cursive;
     font-weight: 50;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
-.navBar .menu a {
-    text-decoration: none;
-    color: #fafafa;
-    padding: 0.2em;
+.navBar .boton-menu {
+    font-size: 25px;
+    color: #fff;
+    margin-right: 20px;
+    cursor: pointer;
 }
 
-.navBar .menu a:hover {
-    border-bottom: #FEE440 solid 0.3em;
+.navBar .menu-bar {
+    position: fixed;
+    width: 100%;
+    height: 0vh;
+    top: 4.3em;
+    background: #A2D2FF;
+    opacity: 0.9;
+    text-align: center;
+    transition: all .5s;
 }
 
-.navBar .menu ul {
-    list-style: none;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-}
-
-.navBar .menu li {
+.navBar .menu-bar li {
+    display: none;
     padding: 0.5em 1em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.2em;
     color: #fafafa;
     text-align: center;
+    line-height: 30px;
+    margin: 40px 0px;
+    transition: all .5s;
+}
+
+.navBar .menu-bar a {
+    text-decoration: none;
+    color: #fafafa;
+    padding: 0.2em;
+}
+
+.navBar .menu-bar li a.active, .navBar .menu-bar li a:hover {
+    border-bottom: #FEE440 solid 0.3em;
+    transition: .3s;
+}
+
+#check {
+    display: none;
+}
+
+#check:checked ~ .menu-bar{
+    height: 100vh;
+}
+
+#check:checked ~ .menu-bar li {
+    display: block;
 }
 
 /* *************************************** */
@@ -212,19 +241,47 @@
 /* *************************************** */
 
 @media only screen and (min-width:768px) {
+    .boton-menu {
+        display: none;
+    }
+
     .navBar {
-    height: 6em;
-    padding: 0.5em 2.5em;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-    }
-
+        height: 6em;
+        padding: 0.5em 2.5em;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        }
+    
     .navBar .logo {
-    justify-content: space-between;
-    align-items: center;
+        width: 350px;
+        position: relative;
+        justify-content: flex-start;
+        align-items: center;
     }
 
+    .navBar .logo h1 {
+        font-size: 1.8em;
+    }
+
+    .navBar .menu-bar {
+        position: static;
+        height: 80px;
+        width: 850px;
+        top: 0;
+        background: none;
+        transition: none;
+        text-align: right;
+        margin: 0px;
+    }
+
+    .navBar .menu-bar li {
+        display: inline-block;
+        line-height: 100px;
+        margin: 0px 5px;
+        transition: none;
+    }
+    
     .navBar .menu ul {
         display: flex;
         flex-flow: row;
